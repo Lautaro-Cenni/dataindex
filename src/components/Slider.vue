@@ -1,6 +1,6 @@
 <template>
-    <div class="slider relative h-[420px]">
-        <ul style="background-color: rgba(0,0,0,0.5);" class="h-full">
+    <div id="slider" class="relative h-[420px] z-0">
+        <ul style="background-color: rgba(0,0,0,0.7);" class="h-full">
             <li v-for="text, index in texts" :key="index" :class="[id == index ? '' : 'hidden']" class="relative h-full">
                 <div class="absolute top-0 left-0 w-full h-full flex">
                     <h2 class="text-4xl font-bold text-white w-full my-auto text-center">{{text.title}}</h2>
@@ -40,45 +40,51 @@
 </template>
 
 <style scoped>
-.slider {
-    background-image: url('../assets/banner.jpg');
+#slider {
+    background-image: url('../assets/banner-slider.jpg');
+    background-position: center;
+}
+h2 { animation: fade-in 1s forwards; }
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 </style>
 
 <script setup>
-    import {ref} from '@vue/reactivity' 
-    const id = ref(0)
-    const texts = [
-        {
-            title: 'Data Engineer – ETL y Big Data'
-        },
-        {
-            title: 'Data Analytics - Business Intelligence'
-        },
-        {
-            title: 'placeHolder1 - xdxdxdxdxd'
-        }
-    ]
-    const next = () => {
-        if (id.value == texts.length-1) {
-            id.value = 0
-        }
-        else {
-            id.value++
-        }
+import {ref} from '@vue/reactivity' 
+const id = ref(0)
+const texts = [
+    {
+        title: 'Data Engineer – ETL y Big Data'
+    },
+    {
+        title: 'Data Analytics - Business Intelligence'
+    },
+    {
+        title: 'placeHolder1 - xdxdxdxdxd'
     }
-    const prev = () => {
-        if (id.value == 0) {
-            id.value = texts.length-1
-        }
-        else {
-            id.value--
-        }
+]
+const next = () => {
+    if (id.value == texts.length-1) {
+        id.value = 0
     }
+    else {
+        id.value++
+    }
+}
+const prev = () => {
+    if (id.value == 0) {
+        id.value = texts.length-1
+    }
+    else {
+        id.value--
+    }
+}
 
-    const change = (value) => {
-        console.log(value)
-        id.value = value
-        console.log(id)
-    }
+const change = (value) => {
+    console.log(value)
+    id.value = value
+    console.log(id)
+}
 </script>

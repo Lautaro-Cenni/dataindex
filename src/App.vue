@@ -1,15 +1,27 @@
 <script setup>
 import Navbar from "./components/Navbar.vue";
-import Slider from "./components/Slider.vue"
+import Slider from "./components/Slider.vue";
+import Content from "./components/Content.vue";
+import Footer from "./components/Footer.vue";
+import Contact from "./components/Contact.vue";
 </script>
 
 <template>
-  <div class="bg-green-400 h-screen">
+  <div class=" h-full">
     <Navbar/>
     <Slider/>
+    <Content/>
+    <Contact/>
+    <Footer/>
   </div>
 </template>
 
-<style scoped>
-
+<style>
+body {
+    font-family: 'Comfortaa';
+    font-size: 22px;
+}
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
 </style>
